@@ -196,6 +196,17 @@ public class Sort {
         Comparable[] aux = new Comparable[a.length];
         halve(a, aux, 0, a.length - 1);
     }
+    public void mergeBU_sort(Comparable[] a) {
+        int n = a.length;
+        Comparable[] aux = new Comparable[n];
+        for (int len = 1; len < n; len *= 2) {
+            for (int lo = 0; lo < n - len; lo += len * 2) {
+                int mid  = lo + len - 1;
+                int hi = Math.min(lo + len * 2 - 1, n - 1);
+                merge(a, aux, lo, mid, hi);
+            }
+        }
+    }
 
 
 
